@@ -1,25 +1,33 @@
 #include <eFlexPwm.h>
 #include <Arduino.h>
- 
-using namespace eFlex;
 
 #define DISABLE_PIN 24
- 
+#define READ_STATE_PIN 25
+
+
+uint8_t phaseShiftPercent = 50; // the phase shift in %
+const uint32_t PwmFreq = 100000; // frequency of PWM = 100kHz
+
+enum stateOptions {OFF, ON};
+uint8_t state = ON;
+uint8_t prevState = ON;
+
+using namespace eFlex;
 // My eFlexPWM submodules (Hardware > PWM2: SM[0], SM[2]
 SubModule Sm20(4, 33);
 SubModule Sm22(6, 9);
 //  Tm2 simplifies access to the functions that concern all the sub-modules
 Timer &Tm2 = Sm20.timer();
- 
-uint8_t phaseShiftPercent = 50; // the phase shift in %
-const uint32_t PwmFreq = 100000; // frequency of PWM = 100kHz
 
 
 void setup() {
   Serial.begin(9600);
 
   pinMode(DISABLE_PIN, OUTPUT);
-  digitalWrite(DISABLE_PIN, LOW);
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(READ_STATE_PIN, INPUT_PULLUP);    // Default HIGH, ie, default state is ON
+
+  digitalWrite(DISABLE_PIN, LOW);    // Low = enabled
 
   Config myConfig;
   myConfig.setReloadLogic(kPWM_ReloadPwmFullCycle);
@@ -44,7 +52,23 @@ void setup() {
 }
  
 void loop() {
-
+  // Read the on/off state. If it has changed, update the inverter state.
+  state = digitalRead(READ_STATE_PIN);
+  if (state != prevState) {
+    if (state == ON) {
+      digitalWrite(LED_BUILTIN, HIGH);
+      digitalWrite(DISABLE_PIN, LOW);
+    } else if (state == OFF) {
+      digitalWrite(LED_BUILTIN, LOW);
+      digitalWrite(DISABLE_PIN, HIGH);
+    } else {
+      Serial.println("Error: state not recognized");
+      Serial.println("Inverter switched off for safety");
+      digitalWrite(LED_BUILTIN, LOW);
+      digitalWrite(DISABLE_PIN, HIGH);
+    }
+  }
+  
   // // make the PWM phase shift oscillate between 0 and 50%
   // phaseShiftPercent = (phaseShiftPercent + 1) % 50;
 
@@ -53,4 +77,5 @@ void loop() {
 
   // delayMicroseconds ( (1000000U / PwmFreq) * 100);     // Delay at least 100 PWM periods
   // delay(100);
+  prevState = state;
 }
