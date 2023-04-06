@@ -10,8 +10,8 @@ FirebaseDatabase database = FirebaseDatabase.instance;
 DatabaseReference ref = FirebaseDatabase.instance.ref();
 
 void updatePowerState(bool state) async {
-  await ref.set({
-    "powerState": state,
+  await ref.update({
+    "charger_1/powerState": state,
   });
   print('Power state updated');
 }
