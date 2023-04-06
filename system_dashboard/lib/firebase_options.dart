@@ -58,7 +58,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '872456628511',
     projectId: 'wpt-system',
     authDomain: 'wpt-system.firebaseapp.com',
-    databaseURL: 'https://wpt-system-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://wpt-system-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'wpt-system.appspot.com',
     measurementId: 'G-SQCDZLSH77',
   );
