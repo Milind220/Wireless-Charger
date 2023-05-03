@@ -3,8 +3,6 @@
 #include <PID_v1.h>
 #include <Wire.h>
 
-// TODO: Add i2c reading of the secondary voltage and setpoint votlage
-
 // Pin definitions
 #define DISABLE_PIN 24   // Used to disable/enable gate driver IC's outputs. low = enable, high = disable.
 #define READ_MODE_PIN_0 36    // Used to read the 0 bit of the mode
@@ -14,7 +12,7 @@
 #define OFFLINE_PHASE_SHIFT 50    // 50% or 90 degrees for offline standard mode.
 #define DEADTIME_NS 100    // deadtime in nanoseconds.
 
-// Phase shift range configuration // ! DOUBLE CHECK THESE VALUES !
+// Phase shift range configuration
 #define MIN_OUTPUT_PS 25   // phase shift value that results in min inverter output
 #define MAX_OUTPUT_PS 0    // phase shift value that results in max inverter output
 
@@ -25,7 +23,7 @@ enum modes{
   OFFLINE = 3,
 };
 
-uint16_t volt = 0; // TODO Later try changing to uint16_t
+uint16_t volt = 0;
 uint16_t sp_int = 0;
 float voltageS = 0.0;
 float sp = 0.0;
@@ -35,8 +33,6 @@ byte a, b, c, d, e;
 uint32_t runOffMode();
 uint32_t runStandbyMode();
 uint32_t runOfflineMode();
-// uint8_t checkMode();
-// void handler(int numBytes);
 
 uint32_t delayMicros = 0; // delay time in microseconds.
 uint8_t mode = OFFLINE;
@@ -101,19 +97,12 @@ void loop() {
   unsigned long currentMillis = millis();
   Wire.requestFrom(9, 5);
   Serial.println("Requested!");
-// while (Wire.available()) {
-    a = Wire.read();
-    b = Wire.read();
-    c = Wire.read();
-    d = Wire.read();
-    e = Wire.read();
-  // }
 
-  // Serial.println(a);
-  // Serial.println(b);
-  // Serial.println(c);
-  // Serial.println(d);
-  // Serial.println(e);
+  a = Wire.read();
+  b = Wire.read();
+  c = Wire.read();
+  d = Wire.read();
+  e = Wire.read();
 
   volt = a;
   volt = (volt << 8) | b;
@@ -170,7 +159,6 @@ void loop() {
         previousMillis = currentMillis;
         
       }
-      
       break;
 
     case OFFLINE:
@@ -180,7 +168,6 @@ void loop() {
         previousMillis = currentMillis;
         runOfflineMode();
       }
-      
       break;
 
     default:
@@ -215,27 +202,3 @@ uint32_t runOfflineMode() {
   Sm22.setupPwmPhaseShift(ChanA, OFFLINE_PHASE_SHIFT, true);
   return 50000;    // 100ms
 }
-
-// void handler(int numBytes) {
-//   a = Wire.read();
-//   b = Wire.read();
-//   c = Wire.read();
-//   d = Wire.read();
-
-//   volt = a;
-//   volt = (volt << 8) | b;
-//   sp_int = c;
-//   sp_int = (sp_int << 8) | d;
-
-//   // print voltage and current
-//   voltageS = float(volt) / 100.0;
-//   sp = float(sp_int) / 100.0;
-
-//   //print values
-//   Serial.print("S Voltage: ");
-//   Serial.print(voltageS);
-//   Serial.print(" | setpoint: ");
-//   Serial.println(sp);
-// }
-
-// (1000000U / PwmFreq) * 100;
