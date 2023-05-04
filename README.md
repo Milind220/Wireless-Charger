@@ -6,6 +6,9 @@ All the code and design files for the wireless charging system that I made for m
 
 A custom built, high power, smart wireless charging system for robotics. The charger transmitter can be controlled from a sleek online dashboard, and the charging mode, output voltage, current, and power can also be monitored. The charger automatically detects the presence of a robot on the charging pad, and switches from STANDBY to ACTIVE charging mode. It also features a closed-loop feedback system to reach the target charging voltage for the robot.
 
+![IMG_8868](https://user-images.githubusercontent.com/68847270/236182191-0a527804-ff54-4439-873c-05ed0eef9187.JPG)
+
+
 ## Contents
 * [Inverter-Controller](#inverter-controller) - The code for controlling the inverter.
 * [WebLink-Primary](#weblink-primary) - The code for the primary (transmitter) side weblink.
@@ -62,5 +65,5 @@ This [folder]() contains:
 ## Report and Presentation
 
 Files in this folder:
-1. FYP final report
-2. FYP final presentation
+1. [FYP final report](https://github.com/Milind220/Wireless-Charger/blob/main/Report%20and%20Presentation/FYP%20Final%20PPT.pptx) 
+2. [FYP final presentation](https://github.com/Milind220/Wireless-Charger/blob/main/Report%20and%20Presentation/final_report_55805388_milind_sharma.pdf)
