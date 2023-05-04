@@ -6,6 +6,9 @@ All the code and design files for the wireless charging system that I made for m
 
 A custom built, high power, smart wireless charging system for robotics. The charger transmitter can be controlled from a sleek online dashboard, and the charging mode, output voltage, current, and power can also be monitored. The charger automatically detects the presence of a robot on the charging pad, and switches from STANDBY to ACTIVE charging mode. It also features a closed-loop feedback system to reach the target charging voltage for the robot.
 
+![IMG_8868](https://user-images.githubusercontent.com/68847270/236182191-0a527804-ff54-4439-873c-05ed0eef9187.JPG)
+
+
 ## Contents
 * [Inverter-Controller](#inverter-controller) - The code for controlling the inverter.
 * [WebLink-Primary](#weblink-primary) - The code for the primary (transmitter) side weblink.
