@@ -62,5 +62,5 @@ This [folder]() contains:
 ## Report and Presentation
 
 Files in this folder:
-1. FYP final report
-2. FYP final presentation
+1. [FYP final report](https://github.com/Milind220/Wireless-Charger/blob/main/Report%20and%20Presentation/FYP%20Final%20PPT.pptx) 
+2. [FYP final presentation](https://github.com/Milind220/Wireless-Charger/blob/main/Report%20and%20Presentation/final_report_55805388_milind_sharma.pdf)
