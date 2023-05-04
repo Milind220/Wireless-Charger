@@ -1,0 +1,77 @@
+** Sheet_1 **
+C1 GND C1_2 506NF
+C2 C2_1 C1_2 45.33NF
+C3 VOLTAGE_S C3_2 41.41NF
+L1 VOLPROBEP C1_2 5UH
+V1 VOLPROBEP V1_2 SIN(0 5   1 0 0 0) AC AC 1
+RLOAD GND VOLTAGE_S 1K
+XT1 C2_1 GND XT1_3 C3_2 MUTUAL_INDUCTORS_XT1
+VXA2 V1_2 GND 0
+VXA1 XT1_3 GND 0
+
+.SUBCKT Mutual_Inductors_XT1 n1 n2 n3 n4
+*
+* Updated to add Rdcpath1 - Rdcpath4 to 
+* provide DC paths to ground in case any 
+* winding is left floating by mistake.
+*
+* signality.co.uk 141006
+* 
+L1 n1 NetR1_1  60.88u
+L2 n4 NetR2_1  61.17u
+Rs1 NetR1_1 n2  84.3
+Rs2 NetR2_1 n3  85
+K1 L1 L2 0.42
+*
+.param rval=1e9
+Rdcpath1 n1 0 {rval}
+Rdcpath2 n2 0 {rval}
+Rdcpath3 n3 0 {rval}
+Rdcpath4 n4 0 {rval}
+.ENDS
+
+
+.SAVE I(VXA2)
+
+.SAVE I(VXA1)
+
+.SAVE VOLTAGE_S VOLPROBEP
+;.tran 10m
+;.op
+.ac lin 1000 10k 200k
+.SUBCKT Mutual_Inductors_%s n1 n2 n3 n4
+*
+* Updated to add Rdcpath1 - Rdcpath4 to 
+* provide DC paths to ground in case any 
+* winding is left floating by mistake.
+*
+* signality.co.uk 141006
+* 
+L1 n1 NetR1_1  %s
+L2 n4 NetR2_1  %s
+Rs1 NetR1_1 n2  %s
+Rs2 NetR2_1 n3  %s
+K1 L1 L2 %s
+*
+.param rval=1e9
+Rdcpath1 n1 0 {rval}
+Rdcpath2 n2 0 {rval}
+Rdcpath3 n3 0 {rval}
+Rdcpath4 n4 0 {rval}
+.ENDS
+*****************************************
+* Note that this Ammeter model has 
+* an internal resistance of 1e-6 Ohm.
+* This is to avoid error message 
+* generation due to accidental 
+* placement of a zero resistance 
+* across an ideal voltage source or 
+* inductor.
+**
+* signality.co.uk 180712
+*****************************************
+.subckt ammeter 1 2
+Vammeter 1 3 0
+Rser 3 2 1u
+.ends ammeter
+*****************************************
