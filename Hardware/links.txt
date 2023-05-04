@@ -1,0 +1,2 @@
+Inverter: https://oshwlab.com/milind220/new-inverter 
+Secondary Side Weblink and sensor reader: https://oshwlab.com/milind220/weblink-secondary
