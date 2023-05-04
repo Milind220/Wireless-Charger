@@ -1,14 +1,11 @@
-import 'package:colyseus_monitor_plus/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:smartcharge_dashboard/routes.dart';
 import 'firebase_options.dart';
-import 'services/service_config.dart';
 
 final GlobalKey<State> globalKey = GlobalKey();
 
 void main() async {
-  await initalizeService();
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

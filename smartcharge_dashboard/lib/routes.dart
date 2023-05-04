@@ -1,5 +1,5 @@
-import 'package:smartcharge_dashboard/pages/home/home_page.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:smartcharge_dashboard/pages/home/home_page.dart';
 
 abstract class AppRoutes {
   static const home = "/";

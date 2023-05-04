@@ -1,7 +1,7 @@
-import 'package:colyseus_monitor_plus/main.dart';
-import 'package:colyseus_monitor_plus/themes/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smartcharge_dashboard/main.dart';
+import 'package:smartcharge_dashboard/themes/themes.dart';
 
 enum ThemesModes {
   system,

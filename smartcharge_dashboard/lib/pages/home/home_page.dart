@@ -1,8 +1,8 @@
-import 'package:smartcharg_dashboard/pages/home/home_data.dart';
-import 'package:smartcharg_dashboard/themes/app_theme.dart';
-import 'package:smartcharg_dashboard/widgets/dashboard/dashboard.dart';
-import 'package:smartcharg_dashboard/widgets/dashboard/dashboard_topbar.dart';
-import 'package:smartcharg_dashboard/widgets/dashboard/dashboard_sidebar.dart';
+import 'package:smartcharge_dashboard/pages/home/home_data.dart';
+import 'package:smartcharge_dashboard/themes/app_theme.dart';
+import 'package:smartcharge_dashboard/widgets/dashboard/dashboard.dart';
+import 'package:smartcharge_dashboard/widgets/dashboard/dashboard_topbar.dart';
+import 'package:smartcharge_dashboard/widgets/dashboard/dashboard_sidebar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

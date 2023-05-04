@@ -1,5 +1,5 @@
-name: colyseus_monitor_plus
-description: A beautiful dashboard build for monitoring colyseus servers ( WIP ).
+name: smartcharge_dashboard 
+description: the control and monitoring and dashboard for the smart wireless charging system. 
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.

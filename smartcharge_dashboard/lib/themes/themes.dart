@@ -1,7 +1,7 @@
 import 'dart:ui';
-import 'package:smartcharg_dashboard/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smartcharge_dashboard/themes/app_theme.dart';
 
 // themes entries
 final Map<ThemesModes, AppColorTheme> themes = {

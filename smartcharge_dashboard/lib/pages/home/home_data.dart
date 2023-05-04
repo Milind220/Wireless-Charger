@@ -1,7 +1,7 @@
-import 'package:colyseus_monitor_plus/widgets/settings_screen.dart';
-import 'package:colyseus_monitor_plus/widgets/status_screen.dart';
-import 'package:colyseus_monitor_plus/widgets/users_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:smartcharge_dashboard/widgets/settings_screen.dart';
+import 'package:smartcharge_dashboard/widgets/status_screen.dart';
+import 'package:smartcharge_dashboard/widgets/users_screen.dart';
 
 class SideMenuConfig {
   SideMenuConfig({this.icon, required this.name, required this.view});
